@@ -146,9 +146,9 @@ nav.dark { background: rgba(7,9,12,.98); border-color: var(--br2); }
   font-family: 'Bebas Neue', sans-serif;
   font-size: 26px;
   letter-spacing: 5px;
-  color: var(--tx);
+  color: var(--gd);
 }
-.n-logo-text em { color: var(--or); font-style: normal; }
+.n-logo-text em { color: var(--gd-l); font-style: normal; }
 
 .n-links {
   list-style: none;
@@ -661,8 +661,8 @@ footer {
   justify-content: space-between;
   flex-wrap: wrap; gap: 20px;
 }
-.f-logo { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 5px; }
-.f-logo em { color: var(--or); font-style: normal; }
+.f-logo { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 5px; color: var(--gd); }
+.f-logo em { color: var(--gd-l); font-style: normal; }
 footer p { color: var(--mu); font-size: 13px; }
 .f-links { display: flex; gap: 28px; }
 .f-links a { color: var(--mu); text-decoration: none; font-size: 13px; transition: color .3s; }
@@ -724,7 +724,32 @@ span[data-lang].on { display: inline; }
 
 <!-- PRELOADER -->
 <div id="pre">
-  <div class="pre-brand">AL<span>-</span>NURI</div>
+  <!-- Preloader logo SVG -->
+  <svg width="64" height="64" viewBox="0 0 44 44" fill="none" style="margin-bottom:4px;">
+    <g fill="#C8A650">
+      <polygon points="22,2 24,10 20,10"/>
+      <polygon points="22,42 24,34 20,34"/>
+      <polygon points="2,22 10,24 10,20"/>
+      <polygon points="42,22 34,24 34,20"/>
+      <polygon points="6.7,6.7 13,12 9,13"/>
+      <polygon points="37.3,6.7 31,12 35,13"/>
+      <polygon points="6.7,37.3 13,32 9,31"/>
+      <polygon points="37.3,37.3 31,32 35,31"/>
+      <polygon points="15,4 17,11 13,10"/>
+      <polygon points="29,4 27,11 31,10"/>
+      <polygon points="15,40 17,33 13,34"/>
+      <polygon points="29,40 27,33 31,34"/>
+      <polygon points="4,15 11,17 10,13"/>
+      <polygon points="4,29 11,27 10,31"/>
+      <polygon points="40,15 33,17 34,13"/>
+      <polygon points="40,29 33,27 34,31"/>
+    </g>
+    <circle cx="22" cy="22" r="11" stroke="#C8A650" stroke-width="1.2" fill="none"/>
+    <circle cx="22" cy="22" r="8.5" fill="#C8A650" opacity=".15"/>
+    <circle cx="22" cy="22" r="4" fill="#C8A650"/>
+    <circle cx="22" cy="22" r="6.5" stroke="#C8A650" stroke-width=".7" fill="none" opacity=".6"/>
+  </svg>
+  <div class="pre-brand" style="color:var(--gd);">AL<span style="color:var(--gd-l);">-</span>NURI</div>
   <div class="pre-tagline">HEALTH &amp; BEAUTY CARE</div>
   <div class="pre-track"><div class="pre-fill"></div></div>
 </div>
@@ -739,18 +764,34 @@ span[data-lang].on { display: inline; }
 <!-- NAV -->
 <nav id="nav">
   <a href="#home" class="n-logo">
-    <svg class="n-logo-icon" viewBox="0 0 40 40" fill="none">
-      <circle cx="20" cy="26" r="9" fill="#E8651A" opacity=".9"/>
-      <g stroke="#E8651A" stroke-width="1.8" stroke-linecap="round" opacity=".75">
-        <line x1="20" y1="4"  x2="20" y2="9"/>
-        <line x1="33" y1="8"  x2="30" y2="11"/>
-        <line x1="36" y1="20" x2="31" y2="20"/>
-        <line x1="33" y1="32" x2="30" y2="29"/>
-        <line x1="7"  y1="8"  x2="10" y2="11"/>
-        <line x1="4"  y1="20" x2="9"  y2="20"/>
-        <line x1="7"  y1="32" x2="10" y2="29"/>
+    <svg class="n-logo-icon" viewBox="0 0 44 44" fill="none">
+      <!-- outer rays (triangular spikes like on the product) -->
+      <g fill="#C8A650">
+        <polygon points="22,2 24,10 20,10"/>
+        <polygon points="22,42 24,34 20,34"/>
+        <polygon points="2,22 10,24 10,20"/>
+        <polygon points="42,22 34,24 34,20"/>
+        <polygon points="6.7,6.7 13,12 9,13"/>
+        <polygon points="37.3,6.7 31,12 35,13"/>
+        <polygon points="6.7,37.3 13,32 9,31"/>
+        <polygon points="37.3,37.3 31,32 35,31"/>
+        <polygon points="15,4 17,11 13,10"/>
+        <polygon points="29,4 27,11 31,10"/>
+        <polygon points="15,40 17,33 13,34"/>
+        <polygon points="29,40 27,33 31,34"/>
+        <polygon points="4,15 11,17 10,13"/>
+        <polygon points="4,29 11,27 10,31"/>
+        <polygon points="40,15 33,17 34,13"/>
+        <polygon points="40,29 33,27 34,31"/>
       </g>
-      <path d="M11 26 Q20 10 29 26" stroke="#2B7A8C" stroke-width="1.2" fill="none" opacity=".5"/>
+      <!-- outer ring -->
+      <circle cx="22" cy="22" r="11" stroke="#C8A650" stroke-width="1.2" fill="none"/>
+      <!-- inner circle fill -->
+      <circle cx="22" cy="22" r="8.5" fill="#C8A650" opacity=".15"/>
+      <!-- center dot -->
+      <circle cx="22" cy="22" r="4" fill="#C8A650"/>
+      <!-- inner ring -->
+      <circle cx="22" cy="22" r="6.5" stroke="#C8A650" stroke-width=".7" fill="none" opacity=".6"/>
     </svg>
     <div class="n-logo-text">AL<em>-</em>NURI</div>
   </a>
@@ -898,7 +939,7 @@ span[data-lang].on { display: inline; }
 <!-- STATS -->
 <div class="stats rv">
   <div class="st">
-    <div class="st-n"><span class="cnt" data-t="3">0</span><span class="st-u">+</span></div>
+    <div class="st-n"><span class="cnt" data-t="9">0</span><span class="st-u">+</span></div>
     <div class="st-l"><span data-lang="kk" class="on">Өнім түрі</span><span data-lang="ru">Вида продуктов</span><span data-lang="en">Products</span></div>
   </div>
   <div class="st">
@@ -981,99 +1022,169 @@ span[data-lang].on { display: inline; }
   </div>
 
   <div class="pr-grid">
-    <!-- Product 1: Ер қуатының құпиясы -->
-    <div class="pc rv" style="transition-delay:.08s">
+
+    <!-- 1: Ер қуатының құпиясы -->
+    <div class="pc rv" style="transition-delay:.05s">
       <div class="pc-img">
         <div class="pc-glow"></div>
-        <img src="./images/product1.jpg" alt="Ер қуатының құпиясы"
-          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-        <div class="pc-ph" style="display:none;">
-          <div class="pc-ph-icon">🍶</div>
-          <div style="text-align:center;font-size:12px;line-height:1.5;">Ер қуатының<br>құпиясы</div>
-          <div style="font-size:10px;opacity:.35;">images/product1.jpg</div>
-        </div>
+        <img src="./images/product1.jpg" alt="Ер қуатының құпиясы">
         <div class="pc-badge new"><span data-lang="kk" class="on">ЖАҢА</span><span data-lang="ru">НОВИНКА</span><span data-lang="en">NEW</span></div>
       </div>
       <div class="pc-body">
-        <div class="pc-name">
-          <span data-lang="kk" class="on">Ер қуатының құпиясы</span>
-          <span data-lang="ru">Тайна мужской силы</span>
-          <span data-lang="en">Secret of Men's Power</span>
-        </div>
-        <div class="pc-desc">
-          <span data-lang="kk" class="on">300г · Табиғи ер күші формуласы. Ерлердің денсаулығы мен қуаты үшін жасалған бірегей өнім.</span>
-          <span data-lang="ru">300г · Натуральная формула мужской силы. Уникальный продукт для здоровья и энергии мужчин.</span>
-          <span data-lang="en">300g · Natural men's power formula. A unique product for men's health and vitality.</span>
-        </div>
+        <div class="pc-name"><span data-lang="kk" class="on">Ер қуатының құпиясы</span><span data-lang="ru">Тайна мужской силы</span><span data-lang="en">Secret of Men's Power</span></div>
+        <div class="pc-desc"><span data-lang="kk" class="on">Ерлердің денсаулығы мен қуаты үшін жасалған табиғи формула. Энергия мен тонусты қалпына келтіреді.</span><span data-lang="ru">Натуральная формула для здоровья и энергии мужчин. Восстанавливает тонус и силу.</span><span data-lang="en">Natural formula for men's health and energy. Restores tone and vitality.</span></div>
         <div class="pc-foot">
           <div class="pc-price-note"><span data-lang="kk" class="on">Баға: сұраңыз</span><span data-lang="ru">Цена: уточняйте</span><span data-lang="en">Price: on request</span></div>
           <div class="pc-stock">● <span data-lang="kk" class="on">Қолда бар</span><span data-lang="ru">В наличии</span><span data-lang="en">In stock</span></div>
         </div>
-        <a href="https://wa.me/87058712377?text=Ер%20қуатының%20құпиясы%20туралы%20сұрағым%20бар" target="_blank" class="btn-wa">
-          📲 <span data-lang="kk" class="on">WhatsApp тапсырыс</span><span data-lang="ru">Заказать</span><span data-lang="en">Order</span>
-        </a>
+        <a href="https://wa.me/87058712377?text=Ер%20қуатының%20құпиясы%20туралы%20сұрағым%20бар" target="_blank" class="btn-wa">📲 <span data-lang="kk" class="on">WhatsApp тапсырыс</span><span data-lang="ru">Заказать</span><span data-lang="en">Order</span></a>
       </div>
     </div>
 
-    <!-- Product 2: Фитогель -->
-    <div class="pc rv" style="transition-delay:.18s">
+    <!-- 2: Фитогель -->
+    <div class="pc rv" style="transition-delay:.10s">
       <div class="pc-img">
         <div class="pc-glow"></div>
-        <img src="./images/phytogel.jpg" alt="Фитогель"
-          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-        <div class="pc-ph" style="display:none;">
-          <div class="pc-ph-icon">🧴</div>
-          <div>Фитогель</div>
-          <div style="font-size:10px;opacity:.35;">images/phytogel.jpg</div>
-        </div>
+        <img src="./images/phytogel.jpg" alt="Фитогель">
         <div class="pc-badge"><span data-lang="kk" class="on">БАР</span><span data-lang="ru">В НАЛИЧИИ</span><span data-lang="en">IN STOCK</span></div>
       </div>
       <div class="pc-body">
         <div class="pc-name">Фитогель</div>
-        <div class="pc-desc">
-          <span data-lang="kk" class="on">Табиғи шөп негізіндегі гель. Толық сипаттама кейін қосылады.</span>
-          <span data-lang="ru">Гель на основе натуральных трав. Полное описание скоро.</span>
-          <span data-lang="en">Natural herb-based gel. Full description coming soon.</span>
-        </div>
+        <div class="pc-desc"><span data-lang="kk" class="on">Табиғи шөптер негізіндегі гель. Буын мен бұлшықет ауруын жеңілдетеді, қалпына келтіруді жеделдетеді.</span><span data-lang="ru">Гель на основе натуральных трав. Снимает боль в суставах и мышцах, ускоряет восстановление.</span><span data-lang="en">Natural herb-based gel. Relieves joint and muscle pain, accelerates recovery.</span></div>
         <div class="pc-foot">
           <div class="pc-price-note"><span data-lang="kk" class="on">Баға: сұраңыз</span><span data-lang="ru">Цена: уточняйте</span><span data-lang="en">Price: on request</span></div>
           <div class="pc-stock">● <span data-lang="kk" class="on">Қолда бар</span><span data-lang="ru">В наличии</span><span data-lang="en">In stock</span></div>
         </div>
-        <a href="https://wa.me/87058712377?text=Фитогель%20туралы%20сұрағым%20бар" target="_blank" class="btn-wa">
-          📲 <span data-lang="kk" class="on">WhatsApp тапсырыс</span><span data-lang="ru">Заказать</span><span data-lang="en">Order</span>
-        </a>
+        <a href="https://wa.me/87058712377?text=Фитогель%20туралы%20сұрағым%20бар" target="_blank" class="btn-wa">📲 <span data-lang="kk" class="on">WhatsApp тапсырыс</span><span data-lang="ru">Заказать</span><span data-lang="en">Order</span></a>
       </div>
     </div>
 
-    <!-- Product 3: Био Лайф -->
-    <div class="pc rv" style="transition-delay:.28s">
+    <!-- 3: Bio Life -->
+    <div class="pc rv" style="transition-delay:.15s">
       <div class="pc-img">
         <div class="pc-glow"></div>
-        <img src="./images/biolife.jpg" alt="Био Лайф"
-          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-        <div class="pc-ph" style="display:none;">
-          <div class="pc-ph-icon">🌿</div>
-          <div>Био Лайф</div>
-          <div style="font-size:10px;opacity:.35;">images/biolife.jpg</div>
-        </div>
+        <img src="./images/biolife.jpg" alt="Bio Life">
         <div class="pc-badge"><span data-lang="kk" class="on">БАР</span><span data-lang="ru">В НАЛИЧИИ</span><span data-lang="en">IN STOCK</span></div>
       </div>
       <div class="pc-body">
-        <div class="pc-name">Био Лайф</div>
-        <div class="pc-desc">
-          <span data-lang="kk" class="on">Биологиялық белсенді қоспа. Толық сипаттама кейін қосылады.</span>
-          <span data-lang="ru">Биологически активная добавка. Полное описание скоро.</span>
-          <span data-lang="en">Biologically active supplement. Full description coming soon.</span>
-        </div>
+        <div class="pc-name">Bio Life</div>
+        <div class="pc-desc"><span data-lang="kk" class="on">Биологиялық белсенді қоспа. Иммунитетті күшейтеді, организмді тонуста ұстайды.</span><span data-lang="ru">Биологически активная добавка. Укрепляет иммунитет, поддерживает тонус организма.</span><span data-lang="en">Biologically active supplement. Boosts immunity and maintains body tone.</span></div>
         <div class="pc-foot">
           <div class="pc-price-note"><span data-lang="kk" class="on">Баға: сұраңыз</span><span data-lang="ru">Цена: уточняйте</span><span data-lang="en">Price: on request</span></div>
           <div class="pc-stock">● <span data-lang="kk" class="on">Қолда бар</span><span data-lang="ru">В наличии</span><span data-lang="en">In stock</span></div>
         </div>
-        <a href="https://wa.me/87058712377?text=Био%20Лайф%20туралы%20сұрағым%20бар" target="_blank" class="btn-wa">
-          📲 <span data-lang="kk" class="on">WhatsApp тапсырыс</span><span data-lang="ru">Заказать</span><span data-lang="en">Order</span>
-        </a>
+        <a href="https://wa.me/87058712377?text=Bio%20Life%20туралы%20сұрағым%20бар" target="_blank" class="btn-wa">📲 <span data-lang="kk" class="on">WhatsApp тапсырыс</span><span data-lang="ru">Заказать</span><span data-lang="en">Order</span></a>
       </div>
     </div>
+
+    <!-- 4: Black Ginger -->
+    <div class="pc rv" style="transition-delay:.20s">
+      <div class="pc-img">
+        <div class="pc-glow"></div>
+        <img src="./images/blackginger.jpg" alt="Black Ginger">
+        <div class="pc-badge"><span data-lang="kk" class="on">БАР</span><span data-lang="ru">В НАЛИЧИИ</span><span data-lang="en">IN STOCK</span></div>
+      </div>
+      <div class="pc-body">
+        <div class="pc-name">Black Ginger</div>
+        <div class="pc-desc"><span data-lang="kk" class="on">Қара зімбір негізіндегі өнім. Метаболизмді жылдамдатады, энергия береді, қан айналымын жақсартады.</span><span data-lang="ru">Продукт на основе чёрного имбиря. Ускоряет метаболизм, даёт энергию, улучшает кровообращение.</span><span data-lang="en">Black ginger-based product. Boosts metabolism, provides energy, improves circulation.</span></div>
+        <div class="pc-foot">
+          <div class="pc-price-note"><span data-lang="kk" class="on">Баға: сұраңыз</span><span data-lang="ru">Цена: уточняйте</span><span data-lang="en">Price: on request</span></div>
+          <div class="pc-stock">● <span data-lang="kk" class="on">Қолда бар</span><span data-lang="ru">В наличии</span><span data-lang="en">In stock</span></div>
+        </div>
+        <a href="https://wa.me/87058712377?text=Black%20Ginger%20туралы%20сұрағым%20бар" target="_blank" class="btn-wa">📲 <span data-lang="kk" class="on">WhatsApp тапсырыс</span><span data-lang="ru">Заказать</span><span data-lang="en">Order</span></a>
+      </div>
+    </div>
+
+    <!-- 5: Master Gel -->
+    <div class="pc rv" style="transition-delay:.25s">
+      <div class="pc-img">
+        <div class="pc-glow"></div>
+        <img src="./images/mastergel.jpg" alt="Master Gel">
+        <div class="pc-badge"><span data-lang="kk" class="on">БАР</span><span data-lang="ru">В НАЛИЧИИ</span><span data-lang="en">IN STOCK</span></div>
+      </div>
+      <div class="pc-body">
+        <div class="pc-name">Master Gel</div>
+        <div class="pc-desc"><span data-lang="kk" class="on">Күшті жасушалы гель. Терең өтіп, ауруды тез басады, қызуды қалыпқа келтіреді.</span><span data-lang="ru">Мощный клеточный гель. Глубоко проникает, быстро снимает боль и воспаление.</span><span data-lang="en">Powerful cellular gel. Deeply penetrates, quickly relieves pain and inflammation.</span></div>
+        <div class="pc-foot">
+          <div class="pc-price-note"><span data-lang="kk" class="on">Баға: сұраңыз</span><span data-lang="ru">Цена: уточняйте</span><span data-lang="en">Price: on request</span></div>
+          <div class="pc-stock">● <span data-lang="kk" class="on">Қолда бар</span><span data-lang="ru">В наличии</span><span data-lang="en">In stock</span></div>
+        </div>
+        <a href="https://wa.me/87058712377?text=Master%20Gel%20туралы%20сұрағым%20бар" target="_blank" class="btn-wa">📲 <span data-lang="kk" class="on">WhatsApp тапсырыс</span><span data-lang="ru">Заказать</span><span data-lang="en">Order</span></a>
+      </div>
+    </div>
+
+    <!-- 6: Qamqor -->
+    <div class="pc rv" style="transition-delay:.30s">
+      <div class="pc-img">
+        <div class="pc-glow"></div>
+        <img src="./images/qamqor.jpg" alt="Қамқор">
+        <div class="pc-badge"><span data-lang="kk" class="on">БАР</span><span data-lang="ru">В НАЛИЧИИ</span><span data-lang="en">IN STOCK</span></div>
+      </div>
+      <div class="pc-body">
+        <div class="pc-name"><span data-lang="kk" class="on">Қамқор</span><span data-lang="ru">Камкор</span><span data-lang="en">Qamqor</span></div>
+        <div class="pc-desc"><span data-lang="kk" class="on">Күтім өнімі. Терінің жасын ұстайды, қоректендіреді және ылғалдандырады.</span><span data-lang="ru">Уходовый продукт. Сохраняет молодость кожи, питает и увлажняет.</span><span data-lang="en">Care product. Preserves skin youth, nourishes and moisturizes.</span></div>
+        <div class="pc-foot">
+          <div class="pc-price-note"><span data-lang="kk" class="on">Баға: сұраңыз</span><span data-lang="ru">Цена: уточняйте</span><span data-lang="en">Price: on request</span></div>
+          <div class="pc-stock">● <span data-lang="kk" class="on">Қолда бар</span><span data-lang="ru">В наличии</span><span data-lang="en">In stock</span></div>
+        </div>
+        <a href="https://wa.me/87058712377?text=Қамқор%20туралы%20сұрағым%20бар" target="_blank" class="btn-wa">📲 <span data-lang="kk" class="on">WhatsApp тапсырыс</span><span data-lang="ru">Заказать</span><span data-lang="en">Order</span></a>
+      </div>
+    </div>
+
+    <!-- 7: Ал-Нури пенка -->
+    <div class="pc rv" style="transition-delay:.35s">
+      <div class="pc-img">
+        <div class="pc-glow"></div>
+        <img src="./images/penka.jpg" alt="Ал-Нури пенка">
+        <div class="pc-badge"><span data-lang="kk" class="on">БАР</span><span data-lang="ru">В НАЛИЧИИ</span><span data-lang="en">IN STOCK</span></div>
+      </div>
+      <div class="pc-body">
+        <div class="pc-name"><span data-lang="kk" class="on">Ал-Нури пенка</span><span data-lang="ru">Al-Nuri пенка</span><span data-lang="en">Al-Nuri Foam</span></div>
+        <div class="pc-desc"><span data-lang="kk" class="on">Беттің тазалауышы. Теріні нәзік тазалап, кеуектерді тазартады, сергіте түседі.</span><span data-lang="ru">Очищающая пенка для лица. Нежно очищает кожу, сужает поры, освежает.</span><span data-lang="en">Face cleansing foam. Gently cleanses skin, tightens pores, refreshes.</span></div>
+        <div class="pc-foot">
+          <div class="pc-price-note"><span data-lang="kk" class="on">Баға: сұраңыз</span><span data-lang="ru">Цена: уточняйте</span><span data-lang="en">Price: on request</span></div>
+          <div class="pc-stock">● <span data-lang="kk" class="on">Қолда бар</span><span data-lang="ru">В наличии</span><span data-lang="en">In stock</span></div>
+        </div>
+        <a href="https://wa.me/87058712377?text=Ал-Нури%20пенка%20туралы%20сұрағым%20бар" target="_blank" class="btn-wa">📲 <span data-lang="kk" class="on">WhatsApp тапсырыс</span><span data-lang="ru">Заказать</span><span data-lang="en">Order</span></a>
+      </div>
+    </div>
+
+    <!-- 8: Витаминдер -->
+    <div class="pc rv" style="transition-delay:.40s">
+      <div class="pc-img">
+        <div class="pc-glow"></div>
+        <img src="./images/vitamins.jpg" alt="Витаминдер">
+        <div class="pc-badge"><span data-lang="kk" class="on">БАР</span><span data-lang="ru">В НАЛИЧИИ</span><span data-lang="en">IN STOCK</span></div>
+      </div>
+      <div class="pc-body">
+        <div class="pc-name"><span data-lang="kk" class="on">Витаминдер</span><span data-lang="ru">Витамины</span><span data-lang="en">Vitamins</span></div>
+        <div class="pc-desc"><span data-lang="kk" class="on">Табиғи витамин кешені. Организмді маусымдық авитаминоздан қорғайды, иммунитетті нығайтады.</span><span data-lang="ru">Натуральный витаминный комплекс. Защищает от сезонного авитаминоза, укрепляет иммунитет.</span><span data-lang="en">Natural vitamin complex. Protects from seasonal deficiency, strengthens immunity.</span></div>
+        <div class="pc-foot">
+          <div class="pc-price-note"><span data-lang="kk" class="on">Баға: сұраңыз</span><span data-lang="ru">Цена: уточняйте</span><span data-lang="en">Price: on request</span></div>
+          <div class="pc-stock">● <span data-lang="kk" class="on">Қолда бар</span><span data-lang="ru">В наличии</span><span data-lang="en">In stock</span></div>
+        </div>
+        <a href="https://wa.me/87058712377?text=Витаминдер%20туралы%20сұрағым%20бар" target="_blank" class="btn-wa">📲 <span data-lang="kk" class="on">WhatsApp тапсырыс</span><span data-lang="ru">Заказать</span><span data-lang="en">Order</span></a>
+      </div>
+    </div>
+
+    <!-- 9: Фито свечи -->
+    <div class="pc rv" style="transition-delay:.45s">
+      <div class="pc-img">
+        <div class="pc-glow"></div>
+        <img src="./images/phytocandles.jpg" alt="Фито свечи">
+        <div class="pc-badge"><span data-lang="kk" class="on">БАР</span><span data-lang="ru">В НАЛИЧИИ</span><span data-lang="en">IN STOCK</span></div>
+      </div>
+      <div class="pc-body">
+        <div class="pc-name"><span data-lang="kk" class="on">Фито шырындар</span><span data-lang="ru">Фито свечи</span><span data-lang="en">Phyto Suppositories</span></div>
+        <div class="pc-desc"><span data-lang="kk" class="on">Шөп негізіндегі ректалды шырындар. Табиғи компоненттер арқылы іш ауруын жеңілдетеді.</span><span data-lang="ru">Ректальные свечи на растительной основе. Устраняют воспаление натуральными компонентами.</span><span data-lang="en">Herbal rectal suppositories. Relieve inflammation with natural ingredients.</span></div>
+        <div class="pc-foot">
+          <div class="pc-price-note"><span data-lang="kk" class="on">Баға: сұраңыз</span><span data-lang="ru">Цена: уточняйте</span><span data-lang="en">Price: on request</span></div>
+          <div class="pc-stock">● <span data-lang="kk" class="on">Қолда бар</span><span data-lang="ru">В наличии</span><span data-lang="en">In stock</span></div>
+        </div>
+        <a href="https://wa.me/87058712377?text=Фито%20шырындар%20туралы%20сұрағым%20бар" target="_blank" class="btn-wa">📲 <span data-lang="kk" class="on">WhatsApp тапсырыс</span><span data-lang="ru">Заказать</span><span data-lang="en">Order</span></a>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -1143,7 +1254,13 @@ span[data-lang].on { display: inline; }
           <option value="">—</option>
           <option>Ер қуатының құпиясы</option>
           <option>Фитогель</option>
-          <option>Био Лайф</option>
+          <option>Bio Life</option>
+          <option>Black Ginger</option>
+          <option>Master Gel</option>
+          <option>Қамқор</option>
+          <option>Ал-Нури пенка</option>
+          <option>Витаминдер</option>
+          <option>Фито шырындар</option>
         </select>
       </div>
       <div class="f-grp">
