@@ -540,7 +540,60 @@ section { padding: 112px 52px; }
   transition: color .3s;
 }
 .pc:hover .pc-name { color: var(--gd); }
-.pc-desc { color: var(--mu); font-size: 13px; line-height: 1.68; margin-bottom: 20px; }
+.pc-desc { display: none; }
+
+/* ── MODAL ── */
+.pm-overlay {
+  display: none; position: fixed; inset: 0; z-index: 9000;
+  background: rgba(0,0,0,.75); backdrop-filter: blur(6px);
+  align-items: center; justify-content: center; padding: 20px;
+}
+.pm-overlay.open { display: flex; }
+.pm-box {
+  background: var(--bg2); border: 1px solid var(--br2);
+  border-radius: 20px; width: 100%; max-width: 860px;
+  max-height: 90vh; overflow-y: auto;
+  display: grid; grid-template-columns: 1fr 1fr;
+  position: relative; animation: pmIn .35s cubic-bezier(.23,1,.32,1);
+}
+@keyframes pmIn { from { opacity:0; transform:scale(.94) translateY(16px); } to { opacity:1; transform:none; } }
+.pm-img-side {
+  background: linear-gradient(145deg, var(--bg3) 0%, var(--bg2) 100%);
+  display: flex; align-items: center; justify-content: center;
+  padding: 40px; border-radius: 20px 0 0 20px; min-height: 320px;
+}
+.pm-img-side img { width: 100%; max-width: 280px; object-fit: contain;
+  filter: drop-shadow(0 20px 40px rgba(0,0,0,.5)); }
+.pm-info { padding: 40px 36px; display: flex; flex-direction: column; gap: 16px; }
+.pm-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px; font-weight: 600; color: var(--gd);
+}
+.pm-desc {
+  color: var(--mu); font-size: 13.5px; line-height: 1.75;
+  flex: 1; overflow-y: auto;
+}
+.pm-desc b { color: var(--tx); }
+.pm-desc br { display: block; content: ''; margin-bottom: 4px; }
+.pm-wa {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  background: #25D366; color: #fff;
+  padding: 13px 24px; border-radius: 10px;
+  font-size: 13px; font-weight: 500; text-decoration: none;
+  transition: background .3s; margin-top: 8px;
+}
+.pm-wa:hover { background: #1DAE57; }
+.pm-close {
+  position: absolute; top: 16px; right: 18px;
+  background: none; border: none; color: var(--mu);
+  font-size: 26px; cursor: pointer; line-height: 1;
+  transition: color .2s;
+}
+.pm-close:hover { color: var(--tx); }
+@media (max-width: 640px) {
+  .pm-box { grid-template-columns: 1fr; }
+  .pm-img-side { border-radius: 20px 20px 0 0; min-height: 220px; padding: 28px; }
+}
 .pc-foot {
   padding-top: 18px;
   border-top: 1px solid var(--br);
@@ -1023,7 +1076,7 @@ span[data-lang].on { display: inline; }
   <div class="pr-grid">
 
     <!-- 1: Фитогель -->
-    <div class="pc rv" style="transition-delay:.10s">
+    <div class="pc rv" data-product="phytogel" style="transition-delay:.10s">
       <div class="pc-img">
         <div class="pc-glow"></div>
         <img src="./images/phytogel.jpg" alt="Фитогель">
@@ -1045,7 +1098,7 @@ span[data-lang].on { display: inline; }
     </div>
 
     <!-- 3: Bio Life -->
-    <div class="pc rv" style="transition-delay:.15s">
+    <div class="pc rv" data-product="biolife" style="transition-delay:.15s">
       <div class="pc-img">
         <div class="pc-glow"></div>
         <img src="./images/biolife.jpg" alt="Bio Life">
@@ -1067,7 +1120,7 @@ span[data-lang].on { display: inline; }
     </div>
 
     <!-- 4: Black Ginger -->
-    <div class="pc rv" style="transition-delay:.20s">
+    <div class="pc rv" data-product="blackginger" style="transition-delay:.20s">
       <div class="pc-img">
         <div class="pc-glow"></div>
         <img src="./images/blackginger.png" alt="Black Ginger">
@@ -1089,7 +1142,7 @@ span[data-lang].on { display: inline; }
     </div>
 
     <!-- 5: Master Gel -->
-    <div class="pc rv" style="transition-delay:.25s">
+    <div class="pc rv" data-product="mastergel" style="transition-delay:.25s">
       <div class="pc-img">
         <div class="pc-glow"></div>
         <img src="./images/mastergel.jpg" alt="Master Gel">
@@ -1111,7 +1164,7 @@ span[data-lang].on { display: inline; }
     </div>
 
     <!-- 6: Qamqor -->
-    <div class="pc rv" style="transition-delay:.30s">
+    <div class="pc rv" data-product="qamqor" style="transition-delay:.30s">
       <div class="pc-img">
         <div class="pc-glow"></div>
         <img src="./images/qamqor.jpg" alt="Қамқор">
@@ -1129,7 +1182,7 @@ span[data-lang].on { display: inline; }
     </div>
 
     <!-- 7: Ал-Нури пенка -->
-    <div class="pc rv" style="transition-delay:.35s">
+    <div class="pc rv" data-product="penka" style="transition-delay:.35s">
       <div class="pc-img">
         <div class="pc-glow"></div>
         <img src="./images/penka.jpg" alt="Ал-Нури пенка">
@@ -1151,7 +1204,7 @@ span[data-lang].on { display: inline; }
     </div>
 
     <!-- 8: Витаминдер -->
-    <div class="pc rv" style="transition-delay:.40s">
+    <div class="pc rv" data-product="vitamins" style="transition-delay:.40s">
       <div class="pc-img">
         <div class="pc-glow"></div>
         <img src="./images/vitamins.jpg" alt="Витаминдер">
@@ -1169,7 +1222,7 @@ span[data-lang].on { display: inline; }
     </div>
 
     <!-- 9: Фито свечи -->
-    <div class="pc rv" style="transition-delay:.45s">
+    <div class="pc rv" data-product="phytocandles" style="transition-delay:.45s">
       <div class="pc-img">
         <div class="pc-glow"></div>
         <img src="./images/phytocandles.jpg" alt="Фито свечи">
@@ -1351,6 +1404,25 @@ span[data-lang].on { display: inline; }
 <!-- WA FLOAT -->
 <a class="wa-f" href="https://wa.me/87058712377" target="_blank" title="WhatsApp">💬</a>
 
+<!-- PRODUCT MODAL -->
+<div class="pm-overlay" id="pm-overlay">
+  <div class="pm-box" id="pm-box">
+    <div class="pm-img-side">
+      <img id="pm-img" src="" alt="">
+    </div>
+    <div class="pm-info">
+      <div class="pm-name" id="pm-name"></div>
+      <div class="pm-desc" id="pm-desc"></div>
+      <a class="pm-wa" id="pm-wa" href="#" target="_blank">📲
+        <span data-lang="kk" class="on">WhatsApp тапсырыс</span>
+        <span data-lang="ru">Заказать</span>
+        <span data-lang="en">Order</span>
+      </a>
+    </div>
+    <button class="pm-close" id="pm-close" aria-label="Жабу">×</button>
+  </div>
+</div>
+
 <script>
 /* ── CURSOR ── */
 const cur = document.getElementById('cur');
@@ -1421,6 +1493,7 @@ document.querySelectorAll('.pc').forEach(card => {
 
 /* ── LANG ── */
 let lang = 'kk';
+let currentModalKey = null;
 function setLang(l) {
   lang = l;
   document.querySelectorAll('[data-lang]').forEach(el => el.classList.remove('on'));
@@ -1429,6 +1502,9 @@ function setLang(l) {
   btns.forEach(b => b.classList.remove('active'));
   btns[['kk','ru','en'].indexOf(l)].classList.add('active');
   document.documentElement.lang = l;
+  if (currentModalKey && pmOverlay.classList.contains('open')) {
+    pmDesc.innerHTML = PRODUCTS[currentModalKey].desc[l] || PRODUCTS[currentModalKey].desc['kk'];
+  }
 }
 
 /* ── WA FORM ── */
@@ -1446,6 +1522,262 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
     const t = document.querySelector(a.getAttribute('href'));
     if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
+  });
+});
+
+/* ── PRODUCT MODAL ── */
+const PRODUCTS = {
+  'phytogel': {
+    name: 'Фитогель',
+    img: './images/phytogel.jpg',
+    wa: 'https://wa.me/87058712377?text=Фитогель%20туралы%20сұрағым%20бар',
+    desc: {
+      kk: `Женьшень тамыры мен витаминдер негізіндегі табиғи гель. Заманауи биотехнология әдісімен жасалған.<br><br>
+<b>Ер адамдарға:</b> Простатит, аденома, уретрит, импотенцияға қарсы. Тестостеронды жоғарлатады, иммунитетті нығайтады, ағзаны тазартады.<br>
+<b>Әйел адамдарға:</b> Эрозия, миома, кистаға қарсы. Етеккір циклін реттейді, гемоглобин деңгейін көтереді.<br>
+<b>Ағзаға:</b> Буын, жүрек-қантамыр ауруларына пайдалы. Көз, тіс, бұлшықет, сүйекті нығайтады.<br><br>
+<b>Қолдану:</b> Таңертең және кешке тамақтан 30 мин бұрын 1 шай қасық, 200 мл жылы сумен. Алкоголь тыйым салынады.<br>
+<b>Қарсы көрсеткіштер:</b> Жүкті әйелдер, 12 жасқа дейінгі балалар.<br>
+<b>Сақтау:</b> 0–25°C, ашылғаннан кейін тоңазытқышта. Жарамдылық — 24 ай.`,
+      ru: `Натуральный гель на основе корня женьшеня и витаминов. Изготовлен современным биотехнологическим методом.<br><br>
+<b>Для мужчин:</b> Против простатита, аденомы, уретрита, импотенции. Повышает тестостерон, укрепляет иммунитет, очищает организм.<br>
+<b>Для женщин:</b> Против эрозии, миомы, кисты. Нормализует менструальный цикл, повышает гемоглобин.<br>
+<b>Для организма:</b> Полезен при болезнях суставов, сердечно-сосудистых заболеваниях. Укрепляет глаза, зубы, мышцы, кости.<br><br>
+<b>Применение:</b> Утром и за 30 мин до ужина 1 ч. л. на 200 мл тёплой воды. Алкоголь запрещён.<br>
+<b>Противопоказания:</b> Беременность, дети до 12 лет.<br>
+<b>Хранение:</b> 0–25°C, после вскрытия в холодильнике. Срок годности — 24 месяца.`,
+      en: `Natural gel based on ginseng root and vitamins. Made using modern biotechnology.<br><br>
+<b>For men:</b> Against prostatitis, adenoma, urethritis, impotence. Raises testosterone, boosts immunity, cleanses the body.<br>
+<b>For women:</b> Against erosion, myoma, cysts. Regulates menstrual cycle, raises haemoglobin.<br>
+<b>For the body:</b> Benefits joints, cardiovascular system. Strengthens eyes, teeth, muscles, bones.<br><br>
+<b>Use:</b> Morning and 30 min before dinner — 1 tsp in 200 ml warm water. No alcohol.<br>
+<b>Contraindications:</b> Pregnant women, children under 12.<br>
+<b>Storage:</b> 0–25°C, refrigerate after opening. Shelf life — 24 months.`
+    }
+  },
+  'biolife': {
+    name: 'Bio Life',
+    img: './images/biolife.jpg',
+    wa: 'https://wa.me/87058712377?text=Bio%20Life%20туралы%20сұрағым%20бар',
+    desc: {
+      kk: `Биологиялық белсенді қоспа (30 капсула). Карбонизацияланған күріш қауызы негізінде жасалған.<br><br>
+<b>Пайдасы:</b> Ағзаны улы заттардан тазартады, аллергияны, гепатитті, бауыр циррозын, асқазан-ішек ауруларын жояды. Наркотикалық интоксикацияны тазартады. Салмақты қауіпсіз азайтады, иммунитетті нығайтады.<br>
+Экологиялық қолайсыз аймақ тұрғындарына және зиянды өндіріс жұмысшыларына ұсынылады.<br><br>
+<b>Қолдану:</b> Ересектерге және 6 жастан асқан балаларға тәулігіне 2 рет 1–3 капсуладан.<br>
+<b>Сақтау:</b> Құрғақ, жарықтан қорғалған жерде 25°C дейін. Жарамдылық — 3 жыл.`,
+      ru: `Биологически активная добавка (30 капсул). На основе карбонизированной рисовой шелухи.<br><br>
+<b>Польза:</b> Детоксикация организма, лечение аллергии, гепатита, цирроза печени, заболеваний ЖКТ. Выводит радионуклиды, тяжёлые металлы, токсины. Безопасное снижение веса, укрепление иммунитета.<br>
+Рекомендован жителям экологически неблагополучных регионов и работникам вредных производств.<br><br>
+<b>Применение:</b> Взрослым и детям старше 6 лет — 2 раза в сутки по 1–3 капсулы.<br>
+<b>Хранение:</b> В сухом, тёмном месте при температуре до 25°C. Срок хранения — 3 года.`,
+      en: `Biologically active supplement (30 capsules). Based on carbonised rice husk.<br><br>
+<b>Benefits:</b> Detoxifies the body, treats allergies, hepatitis, liver cirrhosis, gastrointestinal disorders. Removes radionuclides, heavy metals, toxins. Safe weight loss, immune system support.<br>
+Recommended for residents of polluted regions and workers in hazardous industries.<br><br>
+<b>Use:</b> Adults and children over 6 — 2 times daily, 1–3 capsules.<br>
+<b>Storage:</b> Dry, dark place, up to 25°C. Shelf life — 3 years.`
+    }
+  },
+  'blackginger': {
+    name: 'Black Ginger',
+    img: './images/blackginger.png',
+    wa: 'https://wa.me/87058712377?text=Black%20Ginger%20туралы%20сұрағым%20бар',
+    desc: {
+      kk: `Малайзияның таза қара зімбірінен жасалған 100% табиғи өнім. Химиялық қоспасыз, заманауи биотехнология әдісімен жасалған.<br><br>
+<b>Пайдасы:</b><br>
+• Ер азаматтардың қуатын арттырады<br>
+• Қан тамырларының жұмысын жақсартады<br>
+• Қан айналымын жақсартады<br>
+• Қанды сұйылтады<br>
+• Қан қысымды түсіреді<br>
+• Жалпы энергия мен тонусты арттырады`,
+      ru: `100% натуральный продукт из чистого чёрного имбиря Малайзии. Без химических добавок, изготовлен современным биотехнологическим методом.<br><br>
+<b>Польза:</b><br>
+• Повышает мужскую силу и энергию<br>
+• Улучшает работу сосудов<br>
+• Улучшает кровообращение<br>
+• Разжижает кровь<br>
+• Снижает артериальное давление<br>
+• Повышает общий тонус организма`,
+      en: `100% natural product from pure Malaysian black ginger. No chemical additives, produced using modern biotechnology.<br><br>
+<b>Benefits:</b><br>
+• Boosts male energy and vitality<br>
+• Improves vascular function<br>
+• Enhances blood circulation<br>
+• Thins the blood<br>
+• Lowers blood pressure<br>
+• Increases overall body tone`
+    }
+  },
+  'mastergel': {
+    name: 'Master Gel',
+    img: './images/mastergel.jpg',
+    wa: 'https://wa.me/87058712377?text=Master%20Gel%20туралы%20сұрағым%20бар',
+    desc: {
+      kk: `Буындар мен бұлшық еттерге арналған қабынуға қарсы гель. Массаж тиімділігін арттырады, тіндердегі зат алмасу процестерін қалпына келтіреді.<br><br>
+<b>Қызметі:</b> Жылытады · Ауруды басады · Қабынуға қарсы · Тіндерді қалпына келтіреді<br><br>
+<b>Қолдану көрсеткіштері:</b><br>
+• Остеоартрит<br>
+• Омыртқаның остеохондрозы<br>
+• Ревматизм<br>
+• Артрит, артроз<br>
+• Бел, буын, бұлшықет ауруы<br><br>
+<b>Қолдану:</b> Зақымданған жерге күніне 2–3 рет жағу.`,
+      ru: `Противовоспалительный гель для суставов и мышц. Усиливает эффективность массажа, оказывает регенерирующее действие на обменные процессы в тканях.<br><br>
+<b>Функции:</b> Согревает · Обезболивает · Противовоспалительное · Восстанавливает ткани<br><br>
+<b>Показания:</b><br>
+• Остеоартроз<br>
+• Остеохондроз позвоночника<br>
+• Ревматизм<br>
+• Артрит, артроз<br>
+• Боли в пояснице, суставах, мышцах<br><br>
+<b>Применение:</b> Наносить на поражённый участок 2–3 раза в день.`,
+      en: `Anti-inflammatory gel for joints and muscles. Enhances massage effectiveness, restores metabolic processes in tissues.<br><br>
+<b>Functions:</b> Warms · Relieves pain · Anti-inflammatory · Regenerates tissue<br><br>
+<b>Indications:</b><br>
+• Osteoarthritis<br>
+• Spinal osteochondrosis<br>
+• Rheumatism<br>
+• Arthritis, arthrosis<br>
+• Back, joint and muscle pain<br><br>
+<b>Use:</b> Apply to affected area 2–3 times daily.`
+    }
+  },
+  'qamqor': {
+    name: 'Қамқор',
+    img: './images/qamqor.jpg',
+    wa: 'https://wa.me/87058712377?text=Қамқор%20туралы%20сұрағым%20бар',
+    desc: {
+      kk: `Табиғи компоненттер негізіндегі күтім өнімі. Теріні қоректендіреді, ылғалдандырады, жасартады.<br><br>
+Толық ақпарат алу үшін менеджермен хабарласыңыз.`,
+      ru: `Уходовый продукт на основе натуральных компонентов. Питает, увлажняет и омолаживает кожу.<br><br>
+Для получения полной информации обратитесь к менеджеру.`,
+      en: `Natural care product. Nourishes, moisturises and rejuvenates skin.<br><br>
+Contact our manager for full details.`
+    }
+  },
+  'penka': {
+    name: 'AL-NURI Detox Маска',
+    img: './images/penka.jpg',
+    wa: 'https://wa.me/87058712377?text=AL-NURI%20Detox%20Маска%20туралы%20сұрағым%20бар',
+    desc: {
+      kk: `Беттің детокс маскасы. Табиғи компоненттер: глицерин, ши майы, жүзім тұқымы майы, каолин, D-пантенол, камелия майы.<br><br>
+<b>Пайдасы:</b><br>
+• Артық майды, кірді шығарады<br>
+• Тері тесіктерін тазартады<br>
+• Өлі тері жасушаларын аластайды<br>
+• Әжімдерді жазады<br>
+• Терінің ылғалдылығын сақтайды<br><br>
+<b>Қолдану:</b><br>
+1. Бетті жұмсақ тазалаушымен жуыңыз<br>
+2. Маскані жұқа қабатпен жағыңыз (көз, ерін айналасын болдырмаңыз)<br>
+3. 15–20 минут ұстаңыз<br>
+4. Жылы сумен айналмалы қозғалыспен шайыңыз<br>
+5. Ылғалдандырғыш жағыңыз<br><br>
+<b>Жиілігі:</b> Аптасына 1–2 рет.`,
+      ru: `Детокс-маска для лица. Натуральные компоненты: глицерин, масло ши, масло виноградной косточки, каолин, D-пантенол, масло камелии.<br><br>
+<b>Польза:</b><br>
+• Вытягивает излишки кожного сала и загрязнения<br>
+• Очищает поры кожи<br>
+• Отшелушивает омертвевшие клетки<br>
+• Разглаживает морщины<br>
+• Увлажняет кожу лица<br><br>
+<b>Применение:</b><br>
+1. Очистите лицо мягким умывающим средством<br>
+2. Нанесите маску тонким слоем (избегайте глаз, губ)<br>
+3. Оставьте на 15–20 минут<br>
+4. Смойте тёплой водой круговыми движениями<br>
+5. Нанесите увлажняющий крем<br><br>
+<b>Частота:</b> 1–2 раза в неделю.`,
+      en: `Facial detox mask. Natural ingredients: glycerin, shea butter, grape seed oil, kaolin, D-panthenol, camellia seed oil.<br><br>
+<b>Benefits:</b><br>
+• Draws out excess sebum and impurities<br>
+• Cleanses skin pores<br>
+• Exfoliates dead skin cells<br>
+• Smooths wrinkles<br>
+• Moisturises facial skin<br><br>
+<b>Use:</b><br>
+1. Cleanse face with a mild cleanser<br>
+2. Apply a thin layer (avoid eyes and lips)<br>
+3. Leave for 15–20 minutes<br>
+4. Rinse with warm water using circular movements<br>
+5. Apply moisturiser<br><br>
+<b>Frequency:</b> 1–2 times per week.`
+    }
+  },
+  'vitamins': {
+    name: 'Витаминдер',
+    img: './images/vitamins.jpg',
+    wa: 'https://wa.me/87058712377?text=Витаминдер%20туралы%20сұрағым%20бар',
+    desc: {
+      kk: `Табиғи витамин кешені. Организмді маусымдық авитаминоздан қорғайды, иммунитетті нығайтады, күш-қуат береді.<br><br>
+Толық ақпарат алу үшін менеджермен хабарласыңыз.`,
+      ru: `Натуральный витаминный комплекс. Защищает от сезонного авитаминоза, укрепляет иммунитет, придаёт силы.<br><br>
+Для получения полной информации обратитесь к менеджеру.`,
+      en: `Natural vitamin complex. Protects from seasonal vitamin deficiency, strengthens immunity, boosts energy.<br><br>
+Contact our manager for full details.`
+    }
+  },
+  'phytocandles': {
+    name: 'AL-NURI Свеча',
+    img: './images/phytocandles.jpg',
+    wa: 'https://wa.me/87058712377?text=AL-NURI%20Свеча%20туралы%20сұрағым%20бар',
+    desc: {
+      kk: `Простатит пен геморройға арналған табиғи свеча.<br><br>
+<b>Құрамы:</b> Какао бұршақтары майы, прополис, қара зере, үнді кисталы, раушан, түймедақ, мия, чистотел, грифония, асқабақ эфир майлары.<br><br>
+<b>Пайдасы:</b> Табиғи компоненттер қабынуды басады, ауруды жеңілдетеді, тіндерді қалпына келтіреді.<br><br>
+<b>Қолдану:</b> Күніне 1–2 рет 1 свеча. Қолданар алдында қолды жуыңыз.<br>
+<b>Қарсы көрсеткіштер:</b> Жеке төзімсіздік, аллергия.<br>
+<b>Сақтау:</b> –5°C-тан +15°C-қа дейін, салқын, жарықтан қорғалған жерде.`,
+      ru: `Натуральная свеча при простатите и геморрое.<br><br>
+<b>Состав:</b> Масло какао-бобов, прополис, чёрный тмин, хинди, роза, ромашка, солодка, чистотел, грифония, эфирное масло тыквы.<br><br>
+<b>Польза:</b> Натуральные компоненты снимают воспаление, устраняют боль, восстанавливают ткани.<br><br>
+<b>Применение:</b> 1 суппозиторий 1–2 раза в день. Мыть руки при использовании.<br>
+<b>Противопоказания:</b> Индивидуальная непереносимость, аллергия.<br>
+<b>Хранение:</b> от –5°C до +15°C, в сухом, прохладном, тёмном месте.`,
+      en: `Natural suppository for prostatitis and haemorrhoids.<br><br>
+<b>Composition:</b> Cocoa butter, propolis, black cumin, hindi, rose, chamomile, liquorice, celandine, griffonia, pumpkin essential oil.<br><br>
+<b>Benefits:</b> Natural ingredients relieve inflammation, eliminate pain, restore tissue.<br><br>
+<b>Use:</b> 1 suppository 1–2 times daily. Wash hands before use.<br>
+<b>Contraindications:</b> Individual intolerance, allergy.<br>
+<b>Storage:</b> –5°C to +15°C, dry, cool, dark place.`
+    }
+  }
+};
+
+const pmOverlay = document.getElementById('pm-overlay');
+const pmName   = document.getElementById('pm-name');
+const pmDesc   = document.getElementById('pm-desc');
+const pmImg    = document.getElementById('pm-img');
+const pmWa     = document.getElementById('pm-wa');
+
+function openModal(key) {
+  const p = PRODUCTS[key];
+  if (!p) return;
+  currentModalKey = key;
+  pmName.textContent = p.name;
+  pmImg.src = p.img;
+  pmImg.alt = p.name;
+  pmWa.href = p.wa;
+  const l = lang || 'kk';
+  pmDesc.innerHTML = p.desc[l] || p.desc['kk'];
+  pmOverlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  pmOverlay.classList.remove('open');
+  document.body.style.overflow = '';
+  currentModalKey = null;
+}
+
+document.getElementById('pm-close').addEventListener('click', closeModal);
+pmOverlay.addEventListener('click', e => { if (e.target === pmOverlay) closeModal(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+document.querySelectorAll('.pc[data-product]').forEach(card => {
+  card.addEventListener('click', e => {
+    if (e.target.closest('.btn-wa')) return;
+    openModal(card.dataset.product);
   });
 });
 </script>
